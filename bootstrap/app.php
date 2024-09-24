@@ -21,14 +21,14 @@ return Application::configure(basePath: dirname(__DIR__))
         then: function () {
             Route::middleware(['api', 'locale',])
                 ->prefix('api')
-                ->group(base_path('routes\v1\api\public.php'));
+                ->group(base_path('routes/v1/api/public.php'));
 
             Route::middleware(['api', 'locale', 'authenticated'])
                 ->prefix('api')
-                ->group(base_path('routes\v1\api\protected.php'));
+                ->group(base_path('routes/v1/api/protected.php'));
 
             Route::middleware(['web', 'locale', 'authenticated', 'has-role:admin'])
-                ->group(base_path('routes\v1\web\admin.php'));
+                ->group(base_path('routes/v1/web/admin.php'));
         }
     )->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
